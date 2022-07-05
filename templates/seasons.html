@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block nav %}
+<li><a href="index.html">Home</a></li>
+<li><a href="seasons.html" class="active">Seasonal Crop</a></li>
+{% endblock %}
+
+{% block body %}
+<h2 style="text-align: center; margin: 0px; color: black;">
+  <br>
+  <b>Find out the most suitable crop for the season</b>
+</h2>
+<br />
+<div class="light-gray-bg">
+<div
+        style="
+    width: 350px;
+    height: 50rem;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 10px 10px;
+"
+>
+      <label for="season" style="font-size: 17px"
+        ><b>Select the Season</b></label><br>
+      <select
+        name="season"
+        class="form-control"
+        id="season"
+        placeholder="Select"
+        onchange="update()"
+        style="font-weight: bold;font-size: 20px;height:50px;"
+
+        required
+      >
+        <option selected>Select</option>
+			<option value="Summer Crops">Summer Crops</option>
+			<option value="Winter Crops">Winter Crops</option>
+			<option value="Rainy Crops">Rainy Crops</option>
+      </select>
+<br><br><br>
+    <p id="demo" align="Justify" style="color: #000000; font-size: 20px; font-family: 'Recursive', sans-serif;" ></p>
+</div>
+</div>
+
+    <script type="text/javascript">
+			function update() {
+				var select = document.getElementById('season');
+				var option = select.options[select.selectedIndex];
+				var x=option.text;
+                var string="";
+
+
+				if(x=="Summer Crops")
+				{
+                    string="Pigeonpeas<br><br>Mothbeans<br><br>Blackgram<br><br>Mango<br><br>Grapes<br><br>Papaya<br><br>Watermelons<br><br>Muskmelons";
+
+					document.getElementById("demo").innerHTML =  string.bold();
+				}
+				else if(x=="Winter Crops")
+				{
+                    string= "Maize<br><br>Pigeonpeas<br><br>Lentil<br><br>Pomegranate<br><br>Grapes<br><br>Orange";
+					document.getElementById("demo").innerHTML = string.bold();
+				}
+				else if(x=="Rainy Crops")
+				{
+                    string="Rice<br><br>Papaya<br><br>Coconut";
+					document.getElementById("demo").innerHTML = string.bold();
+				}
+
+				else
+				{
+
+					document.getElementById("demo").innerHTML = "";
+				}
+			}
+
+			update();
+		</script>
+    {% endblock %}

@@ -13,7 +13,7 @@ crop_recommendation_model = pickle.load(open(crop_recommendation_model_path, 'rb
 
 app = Flask(__name__)
 
-'''@ app.route('/fertilizer-predict', methods=['POST'])
+@ app.route('/fertilizer-predict', methods=['POST'])
 def fertilizer_recommend():
 
     crop_name = str(request.form['cropname'])
@@ -62,7 +62,6 @@ def fertilizer_recommend():
     return render_template('Fertilizer-Result.html', recommendation1=response1,
                            recommendation2=response2, recommendation3=response3,
                            diff_n = abs_n, diff_p = abs_p, diff_k = abs_k)
-'''
 @app.route("/")
 @app.route("/index.html")
 def index():
@@ -72,10 +71,13 @@ def index():
 def crop():
     return render_template("CropRecommendation.html")
 
-'''@app.route("/FertilizerRecommendation.html")
+@app.route("/FertilizerRecommendation.html")
 def fertilizer():
     return render_template("FertilizerRecommendation.html")
-'''
+@app.route("/Seasons.html")
+def season():
+    return render_template("Seasons.html")
+
 
 @ app.route('/crop_prediction', methods=['POST'])
 def crop_prediction():
